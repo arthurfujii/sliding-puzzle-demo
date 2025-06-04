@@ -1,32 +1,38 @@
-import fs from 'fs';
-import path from 'path';
-import Head from 'next/head';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { Avatar } from '@/components/Avatar';
-import { Infobar } from '@/components/Infobar';
-import { PageSection } from '@/components/PageSection';
+import classNames from "classnames";
+import fs from "fs";
+import path from "path";
+import Head from "next/head";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Avatar } from "@/components/Avatar";
+import { Infobar } from "@/components/Infobar";
+import { PageSection } from "@/components/PageSection";
 import {
   GameState,
   PuzzleConfigs,
   PuzzleGame,
   PuzzleTileBaseProps,
   PuzzleTileProps,
-} from '@/components/Puzzle';
-import { initializePuzzleTiles } from '@/utils/puzzle';
+} from "@/components/Puzzle";
+import { initializePuzzleTiles } from "@/utils/puzzle";
+import { grid } from "../../styled-system/patterns";
+import { css } from "../../styled-system/css";
 
 export async function getServerSideProps() {
   const puzzleSize: number = 3;
-  const avatarImageDirectory: string = 'images/avatars';
+  const avatarImageDirectory: string = "images/avatars";
   const originalImageSrc: string = `${avatarImageDirectory}/panda.jpeg`;
   let avatarImageFilenames: string[] = [];
   let puzzleTiles: PuzzleTileBaseProps[] = [];
 
   try {
-    const imageDirectory = path.join(process.cwd(), `public/${avatarImageDirectory}`);
+    const imageDirectory = path.join(
+      process.cwd(),
+      `public/${avatarImageDirectory}`
+    );
     avatarImageFilenames = fs.readdirSync(imageDirectory);
   } catch (error) {
-    console.error('Error loading avatars:', error);
+    console.error("Error loading avatars:", error);
   }
 
   try {
@@ -34,7 +40,7 @@ export async function getServerSideProps() {
     // Initialize puzzle tiles on the server side.
     puzzleTiles = await initializePuzzleTiles(originalImageSrc, puzzleSize);
   } catch (error) {
-    console.error('Error initializing puzzle pieces:', error);
+    console.error("Error initializing puzzle pieces:", error);
   }
 
   return {
@@ -88,10 +94,10 @@ const Home: React.FC<HomeProps> = ({
   const updatePuzzleGame = (puzzleSize: number, path: string) => {
     // Handle the click event here
     // Send an HTTP request to the server
-    fetch('/api/load-image', {
-      method: 'POST',
+    fetch("/api/load-image", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       // You can send data in the request body if needed
       body: JSON.stringify({ puzzleSize, path }),
@@ -104,7 +110,7 @@ const Home: React.FC<HomeProps> = ({
       })
       .catch((error) => {
         // Handle any errors
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
@@ -165,16 +171,16 @@ const Home: React.FC<HomeProps> = ({
     }
   }, [gameState.timer, gameState.timeRemaining]);
 
-  const title = 'Sliding Puzzle Demo';
-  const description = 'Description';
+  const title = "Sliding Puzzle Demo";
+  const description = "Description";
 
   const timerOptions = [
-    { name: 'Unlimited', value: '0' },
-    { name: '1 hour', value: '60' },
-    { name: '30 minutes', value: '30' },
-    { name: '10 minutes', value: '10' },
-    { name: '5 minutes', value: '5' },
-    { name: '1 minute', value: '1' },
+    { name: "Unlimited", value: "0" },
+    { name: "1 hour", value: "60" },
+    { name: "30 minutes", value: "30" },
+    { name: "10 minutes", value: "10" },
+    { name: "5 minutes", value: "5" },
+    { name: "1 minute", value: "1" },
   ];
 
   return (
@@ -190,14 +196,22 @@ const Home: React.FC<HomeProps> = ({
       </PageSection>
       <div className="dark-background">
         <PageSection>
-          <div className="avatar-container">
+          <div
+            className={classNames(
+              grid({
+                gap: "16px",
+                gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+              }),
+              css({ padding: "24px 0" })
+            )}
+          >
             {avatarImageFilenames.map((avatar, idx) => (
               <Avatar
                 key={idx}
                 id={idx}
                 image={{
                   src: `${avatarImageDirectory}/${avatar}`,
-                  alt: `${avatar.replace('.jpeg', '')}`,
+                  alt: `${avatar.replace(".jpeg", "")}`,
                 }}
                 active={avatarActiveId === idx}
                 handleClick={handleClick}
