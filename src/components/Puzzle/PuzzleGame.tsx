@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { shuffleArray } from '@/utils/common';
-import { findEmptyPosition, initializeBoard, isPuzzleSolved, unflattenBoard } from '@/utils/puzzle';
-import PuzzleTile from './PuzzleTile';
-import { PuzzleGameProps } from './types';
-import { PandaCSS } from '../PandaCSS';
+import React, { useEffect, useState } from "react";
+import { shuffleArray } from "@/utils/common";
+import {
+  findEmptyPosition,
+  initializeBoard,
+  isPuzzleSolved,
+  unflattenBoard,
+} from "@/utils/puzzle";
+import PuzzleTile from "./PuzzleTile";
+import { PuzzleGameProps } from "./types";
+import { PandaCSS } from "../PandaCSS";
+import ClassNames from "@/styles/styles";
 
 const PuzzleGame = (props: PuzzleGameProps) => {
   const { puzzleTiles, showTilesNumbers, gameState, setGameState } = props;
@@ -84,16 +90,20 @@ const PuzzleGame = (props: PuzzleGameProps) => {
         Workaround to have grid columns preprocessed by Panda so the change
         of the puzzle size does not break the tiles on the board.
       */}
-      <div className="puzzle-outer-wrapper">
-        <div className="puzzle-inner-wrapper">
+      <div className={ClassNames.puzzleOuterWrapper}>
+        <div className={ClassNames.puzzleInnerWrapper}>
           {boardTiles.map((row, rowIndex) => (
-            <div key={rowIndex} className="puzzle-row">
+            <div key={rowIndex} className={ClassNames.puzzleRow}>
               {row.map((tile, colIndex) => (
                 <PuzzleTile
                   key={colIndex}
                   id={tile !== null ? puzzleTiles[tile].id : -1}
-                  imageSrc={tile !== null ? puzzleTiles[tile].imageSrc : undefined}
-                  label={tile !== null && showTilesNumbers ? `${tile + 1}` : false}
+                  imageSrc={
+                    tile !== null ? puzzleTiles[tile].imageSrc : undefined
+                  }
+                  label={
+                    tile !== null && showTilesNumbers ? `${tile + 1}` : false
+                  }
                   handleClick={() => handleTileClick(rowIndex, colIndex)}
                 />
               ))}
@@ -101,9 +111,7 @@ const PuzzleGame = (props: PuzzleGameProps) => {
           ))}
         </div>
         {/* @TODO: Replace empty div with congratulations/fail message */}
-        {gameState.ended && (
-          <div />
-        )}
+        {gameState.ended && <div />}
       </div>
     </>
   );

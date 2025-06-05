@@ -25,7 +25,9 @@ const Avatar = (props: AvatarProps) => {
       },
     })
   );
-  const RootActive = css({ border: "4px solid #fff" });
+  const RootActive = css({
+    border: "4px solid goldenrod",
+  });
   const Image = css({
     borderRadius: "inherit",
     objectFit: "cover",
@@ -44,11 +46,11 @@ const Avatar = (props: AvatarProps) => {
   );
 
   return (
-    <RadixAvatar.Root 
+    <RadixAvatar.Root
       className={classNameAvatar}
       onClick={() => handleClick(src, id)}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           handleClick(src, id);
         }

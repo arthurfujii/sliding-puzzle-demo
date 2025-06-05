@@ -17,11 +17,12 @@ import {
 import { initializePuzzleTiles } from "@/utils/puzzle";
 import { grid } from "../../styled-system/patterns";
 import { css } from "../../styled-system/css";
+import ClassNames from "@/styles/styles";
 
 export async function getServerSideProps() {
   const puzzleSize: number = 3;
   const avatarImageDirectory: string = "images/avatars";
-  const originalImageSrc: string = `${avatarImageDirectory}/panda.jpeg`;
+  const originalImageSrc: string = `${avatarImageDirectory}/dulce_dormindo.jpg`;
   let avatarImageFilenames: string[] = [];
   let puzzleTiles: PuzzleTileBaseProps[] = [];
 
@@ -89,7 +90,7 @@ const Home: React.FC<HomeProps> = ({
   });
 
   // Three means "Harry".
-  const [avatarActiveId, setAvatarActiveId] = useState<number>(3);
+  const [avatarActiveId, setAvatarActiveId] = useState<number>(0);
 
   const updatePuzzleGame = (puzzleSize: number, path: string) => {
     // Handle the click event here
@@ -171,8 +172,8 @@ const Home: React.FC<HomeProps> = ({
     }
   }, [gameState.timer, gameState.timeRemaining]);
 
-  const title = "Sliding Puzzle Demo";
-  const description = "Description";
+  const title = "Pets Sliding Puzzle";
+  const description = "Welcome to Dulce, Maru and Mia Puzzle Challenge!";
 
   const timerOptions = [
     { name: "Unlimited", value: "0" },
@@ -190,11 +191,11 @@ const Home: React.FC<HomeProps> = ({
         <meta name="description" content={description} />
       </Head>
       <PageSection>
-        <h1 className="typography-h1">{title}</h1>
+        <h1 className={ClassNames.typographyH1}>{title}</h1>
         <hr />
-        <div className="typography-body">{description}</div>
+        <div className={ClassNames.typographyBody}>{description}</div>
       </PageSection>
-      <div className="dark-background">
+      <div className={ClassNames.darkBackground}>
         <PageSection>
           <div
             className={classNames(
@@ -221,7 +222,7 @@ const Home: React.FC<HomeProps> = ({
         </PageSection>
       </div>
       <PageSection>
-        <div className="puzzle-configs">
+        <div className={ClassNames.puzzleConfigs}>
           <PuzzleConfigs
             timerOptions={timerOptions}
             setPuzzleSize={setPuzzleSize}
@@ -230,14 +231,14 @@ const Home: React.FC<HomeProps> = ({
             toggleTilesNumbers={toggleTilesNumbers}
           />
         </div>
-        <div className="puzzle-container">
+        <div className={ClassNames.puzzleContainer}>
           <PuzzleGame
             puzzleTiles={tiles}
             showTilesNumbers={showNumbers}
             gameState={gameState}
             setGameState={setGameState}
           />
-          <div className="original-image-container">
+          <div className={ClassNames.originalImageContainer}>
             <Image
               src={`/${originalSrc}`}
               alt="Original Image"
@@ -245,13 +246,13 @@ const Home: React.FC<HomeProps> = ({
               height="500"
             />
             {!displayMirror && (
-              <div className="original-image-overlay">
+              <div className={ClassNames.originalImageOverlay}>
                 {/* @TODO: Place overlay icon here if you want. */}
               </div>
             )}
           </div>
         </div>
-        <div className="puzzle-info-container">
+        <div className={ClassNames.puzzleInfoContainer}>
           <Infobar
             moves={gameState.moves}
             timer={gameState.timer}

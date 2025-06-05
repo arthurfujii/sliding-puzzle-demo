@@ -1,6 +1,7 @@
-import { PuzzleConfigsProps } from './types';
-import { HoverCard } from '../HoverCard';
-import { Switch } from '../Switch';
+import { PuzzleConfigsProps } from "./types";
+import { HoverCard } from "../HoverCard";
+import { Switch } from "../Switch";
+import ClassNames from "@/styles/styles";
 
 const PuzzleConfigs = (props: PuzzleConfigsProps) => {
   const { toggleMirror, toggleTilesNumbers } = props;
@@ -9,7 +10,7 @@ const PuzzleConfigs = (props: PuzzleConfigsProps) => {
     <>
       {/* @TODO: Add a Radix slider to control number of tiles, if you wish. */}
 
-      <div className="puzzle-configs-item">
+      <div className={ClassNames.puzzleConfigsItem}>
         <Switch
           id="switch-tile-number-display"
           label="Show Tiles Numbers"
@@ -20,8 +21,8 @@ const PuzzleConfigs = (props: PuzzleConfigsProps) => {
           content="Switch configuration to display the number of the piece over each tile. This is a helper for the players."
         />
       </div>
-      <div className="device-desktop-only">
-        <div className="puzzle-configs-item">
+      <div className={ClassNames.deviceDesktopOnly}>
+        <div className={ClassNames.puzzleConfigsItem}>
           <Switch
             id="switch-mirror-display"
             label="Display Mirror"

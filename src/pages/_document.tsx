@@ -5,10 +5,14 @@ import Document, {
   NextScript,
   DocumentContext,
   DocumentInitialProps,
-} from 'next/document';
+} from "next/document";
+
+import { css } from "../../styled-system/css";
 
 class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
 
     // Run the React rendering logic synchronously.
@@ -42,12 +46,12 @@ class CustomDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        {
-          /*
-            @TODO: Body styles go here.
-          */
-        }
-        <body>
+        <body
+          className={css({
+            backgroundColor: "#DDD",
+            fontFamily: "Poppins, sans-serif",
+          })}
+        >
           <Main />
           <NextScript />
         </body>

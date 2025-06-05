@@ -1,14 +1,15 @@
-import Image from 'next/image';
-import React from 'react';
-import { PuzzleTileProps } from './types';
+import Image from "next/image";
+import React from "react";
+import { PuzzleTileProps } from "./types";
+import ClassNames from "@/styles/styles";
 
 const PuzzleTile: React.FC<PuzzleTileProps> = (props: PuzzleTileProps) => {
   const { id, imageSrc, label, handleClick } = props;
   const isEmpty = imageSrc === undefined;
 
   return (
-    <div className="puzzle-tile-container" onClick={handleClick}>
-      <div className="puzzle-tile">
+    <div className={ClassNames.puzzleTileContainer} onClick={handleClick}>
+      <div className={ClassNames.puzzleTile}>
         {isEmpty ? (
           <div />
         ) : (

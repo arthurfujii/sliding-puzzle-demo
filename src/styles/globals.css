@@ -10,7 +10,7 @@ li {
 }
 
 /* @TODO: Remove this styles after setting up Panda */
-body {
+/* body {
   background-color: #fff;
   font-family: "Poppins, sans-serif";
 }
@@ -214,4 +214,4 @@ body {
     max-height: 500px;
     max-width: 500px;
   }
-}
+} */

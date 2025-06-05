@@ -1,24 +1,24 @@
-import * as RadixSwitch from '@radix-ui/react-switch';
-import React from 'react';
-import { SwitchProps } from './types';
-import { PandaCSS } from '../PandaCSS';
+import * as RadixSwitch from "@radix-ui/react-switch";
+import React from "react";
+import { SwitchProps } from "./types";
+import ClassNames from "@/styles/styles";
 
 const Switch = (props: SwitchProps) => {
   const { id, defaultChecked, label, handleChange } = props;
 
   return (
     <form>
-      <div className="switch-container">
-        <label className="switch-label" htmlFor={id}>
+      <div className={ClassNames.switchContainer}>
+        <label className={ClassNames.switchLabel} htmlFor={id}>
           {label}
         </label>
         <RadixSwitch.Root
-          className="switch-root"
+          className={ClassNames.switchRoot}
           id={id}
           defaultChecked={defaultChecked}
           onCheckedChange={handleChange}
         >
-          <RadixSwitch.Thumb className="switch-thumb" />
+          <RadixSwitch.Thumb className={ClassNames.switchThumb} />
         </RadixSwitch.Root>
       </div>
     </form>
