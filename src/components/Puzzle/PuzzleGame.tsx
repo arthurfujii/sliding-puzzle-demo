@@ -110,8 +110,13 @@ const PuzzleGame = (props: PuzzleGameProps) => {
             </div>
           ))}
         </div>
+
         {/* @TODO: Replace empty div with congratulations/fail message */}
-        {gameState.ended && <div />}
+        {gameState.ended && (
+          <div>
+            {gameState.puzzleSolved ? <p>Congrats!!</p> : <p>Try Again! :(</p>}
+          </div>
+        )}
       </div>
     </>
   );

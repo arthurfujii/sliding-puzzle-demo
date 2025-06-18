@@ -15,7 +15,7 @@ const darkBackground = css({
 });
 
 const deviceDesktopOnly = css({
-  display: ["none", "none", "block"], // Hidden on mobile, shown on desktop
+  display: ["none", "none", "flex"], // Hidden on mobile, shown on desktop
 });
 
 const footerCopyright = css({
@@ -72,6 +72,7 @@ const pageSectionMobilePadding = css({
 });
 
 const puzzleConfigs = css({
+  display: "flex",
   margin: "24px 0",
 });
 
@@ -182,6 +183,67 @@ const deviceMobileOnly = css({
   display: ["block", "block", "none"], // Shown on mobile, hidden on desktop
 });
 
+const selectTrigger = css({
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+  background: "#FFF",
+  padding: "0 15px",
+  borderRadius: "6px",
+  height: "35px",
+  boxShadow: "0 2px 10px #000",
+  _hover: { bg: "lightskyblue" },
+});
+
+const selectContent = css({
+  background: "#FFF",
+  borderRadius: "6px",
+  boxShadow: "0px 10px 38px -10px rgba(22, 23, 24, 0.35)",
+  zIndex: "1",
+});
+
+const selectViewport = css({ padding: "5px" });
+
+const selectItem = css({
+  display: "flex",
+  alignItems: "center",
+  padding: "20px 35px 20px 25px",
+  height: "25px",
+  position: "relative",
+  _hover: { bg: "lightcoral" },
+});
+
+const selectItemIndicator = css({
+  position: "absolute",
+  left: 0,
+  width: "25px",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
+const toolbarRoot = css({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  bg: "#FFF",
+  boxShadow: "5px 8px 10px -10px #000",
+  padding: "10px",
+});
+
+const toolbarButton = css({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  bg: "#000",
+  color: "#DDD",
+  padding: "10px 20px",
+  borderRadius: "6px",
+  _hover: { bg: "#AAA", color: "#000" },
+});
+
 export default {
   resetStyles,
   bodyStyles,
@@ -212,4 +274,11 @@ export default {
   typographyH1,
   typographyBody,
   deviceMobileOnly,
+  selectTrigger,
+  selectContent,
+  selectViewport,
+  selectItem,
+  selectItemIndicator,
+  toolbarRoot,
+  toolbarButton,
 };

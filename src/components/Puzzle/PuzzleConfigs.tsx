@@ -2,9 +2,10 @@ import { PuzzleConfigsProps } from "./types";
 import { HoverCard } from "../HoverCard";
 import { Switch } from "../Switch";
 import ClassNames from "@/styles/styles";
+import { Select } from "../Select";
 
 const PuzzleConfigs = (props: PuzzleConfigsProps) => {
-  const { toggleMirror, toggleTilesNumbers } = props;
+  const { toggleMirror, toggleTilesNumbers, timerOptions, setTimer } = props;
 
   return (
     <>
@@ -21,6 +22,7 @@ const PuzzleConfigs = (props: PuzzleConfigsProps) => {
           content="Switch configuration to display the number of the piece over each tile. This is a helper for the players."
         />
       </div>
+
       <div className={ClassNames.deviceDesktopOnly}>
         <div className={ClassNames.puzzleConfigsItem}>
           <Switch
@@ -35,7 +37,11 @@ const PuzzleConfigs = (props: PuzzleConfigsProps) => {
           />
         </div>
       </div>
-      {/* @TODO: Add a Radix select for the timer, if you wish. */}
+      <div>
+        <div>
+          <Select items={timerOptions} onSelect={setTimer} />
+        </div>
+      </div>
     </>
   );
 };

@@ -21,7 +21,17 @@ const PuzzleTile: React.FC<PuzzleTileProps> = (props: PuzzleTileProps) => {
           />
         )}
       </div>
-      {label && <span>{label}</span>}
+      {label && (
+        <span
+          style={{
+            color: "#000",
+            background: "#FFF",
+            position: "absolute",
+          }}
+        >
+          {label}
+        </span>
+      )}
     </div>
   );
 };
