@@ -231,6 +231,7 @@ const toolbarRoot = css({
   bg: "#FFF",
   boxShadow: "5px 8px 10px -10px #000",
   padding: "10px",
+  borderRadius: "4px",
 });
 
 const toolbarButton = css({
@@ -242,6 +243,7 @@ const toolbarButton = css({
   padding: "10px 20px",
   borderRadius: "6px",
   _hover: { bg: "#AAA", color: "#000" },
+  _active: { bg: "lightblue", color: "#000" },
 });
 
 export default {
